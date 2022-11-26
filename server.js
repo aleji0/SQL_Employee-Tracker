@@ -87,10 +87,10 @@ function loadPrompts() {
     let choice = res.choice;
 
     switch (choice) {
-      case 'VIEW_EMPLOYEES':
+      case "VIEW_EMPLOYEES":
         viewEmployees();
         break;
-        case "VIEW_EMPLOYEES":
+        case "VIEW_EMPLOYEES_BY_DEPARTMENT":
         viewEmployeesByDepartment();
         break;
       case "VIEW_EMPLOYEES_BY_MANAGER":
@@ -142,7 +142,7 @@ function viewEmployees() {
         console.log("\n");
         console.table(employees);
       })
-      .then(() => loadMainPrompts());
+      .then(() => loadPrompts());
   }
   
   // View all employees that belong to a department
@@ -169,7 +169,7 @@ function viewEmployees() {
             console.log("\n");
             console.table(employees);
           })
-          .then(() => loadMainPrompts())
+          .then(() => loadPrompts())
       });
   }
   
@@ -201,7 +201,7 @@ function viewEmployees() {
               console.table(employees);
             }
           })
-          .then(() => loadMainPrompts())
+          .then(() => loadPrompts())
       });
   }
   
@@ -225,7 +225,7 @@ function viewEmployees() {
         ])
           .then(res => db.removeEmployee(res.employeeId))
           .then(() => console.log("Removed employee from the database"))
-          .then(() => loadMainPrompts())
+          .then(() => loadPrompts())
       })
   }
   
@@ -267,7 +267,7 @@ function viewEmployees() {
                 ])
                   .then(res => db.updateEmployeeRole(employeeId, res.roleId))
                   .then(() => console.log("Updated employee's role"))
-                  .then(() => loadMainPrompts())
+                  .then(() => loadPrompts())
               });
           });
       })
@@ -312,7 +312,7 @@ function viewEmployees() {
                 ])
                   .then(res => db.updateEmployeeManager(employeeId, res.managerId))
                   .then(() => console.log("Updated employee's manager"))
-                  .then(() => loadMainPrompts())
+                  .then(() => loadPrompts())
               })
           })
       })
@@ -326,7 +326,7 @@ function viewEmployees() {
         console.log("\n");
         console.table(roles);
       })
-      .then(() => loadMainPrompts());
+      .then(() => loadPrompts());
   }
   
   // add role
@@ -358,7 +358,7 @@ function viewEmployees() {
           .then(role => {
             db.createRole(role)
               .then(() => console.log(`Added ${role.title} to the database`))
-              .then(() => loadMainPrompts())
+              .then(() => loadPrompts())
           })
       })
   }
@@ -384,7 +384,7 @@ function viewEmployees() {
         ])
           .then(res => db.removeRole(res.roleId))
           .then(() => console.log("Removed role from the database"))
-          .then(() => loadMainPrompts())
+          .then(() => loadPrompts())
       })
   }
   
@@ -396,7 +396,7 @@ function viewEmployees() {
         console.log("\n");
         console.table(departments);
       })
-      .then(() => loadMainPrompts());
+      .then(() => loadPrompts());
   }
   
   // add a department
@@ -411,7 +411,7 @@ function viewEmployees() {
         let name = res;
         db.createDepartment(name)
           .then(() => console.log(`Added ${name.name} to the database`))
-          .then(() => loadMainPrompts())
+          .then(() => loadPrompts())
       })
   }
   
@@ -434,7 +434,7 @@ function viewEmployees() {
         })
           .then(res => db.removeDepartment(res.departmentId))
           .then(() => console.log(`Removed department from the database`))
-          .then(() => loadMainPrompts())
+          .then(() => loadPrompts())
       })
   }
   
@@ -446,7 +446,7 @@ function viewEmployees() {
         console.log("\n");
         console.table(departments);
       })
-      .then(() => loadMainPrompts());
+      .then(() => loadPrompts());
   }
   
   // add employee
@@ -511,7 +511,7 @@ function viewEmployees() {
                       .then(() => console.log(
                         `Added ${firstName} ${lastName} to the database`
                       ))
-                      .then(() => loadMainPrompts())
+                      .then(() => loadPrompts())
                   })
               })
           })

@@ -1,8 +1,8 @@
 const connection = require('./connection');
 
 class DB {
-    constructor() {
-        this.connection=connection
+    constructor(connection) {
+        this.connection = connection;
     }
     
   // find all employees joimn with roles and departments to show details
