@@ -1,13 +1,15 @@
-const inquirer = require('inquirer');
-const db = require("./db");
+const { prompt } = require('inquirer');
+const db = require('./db');
+const asciiLogo = require('asciiart-logo');
 require("console.table");
+
 
 init();
 
 function init() {
-    const asciiLogo = logo({ name: "Employee Manager" }).render();
+    const asciiLogoText = asciiLogo({ name: "Employee Tracker" }).render();
 
-    console.log(asciiLogo);
+    console.log(asciiLogoText);
 
     loadPrompts ();
 }
@@ -203,7 +205,7 @@ function viewEmployees() {
       });
   }
   
-  // Delete an employee
+  // delete employee
   function removeEmployee() {
     db.findAllEmployees()
       .then(([rows]) => {
@@ -227,7 +229,7 @@ function viewEmployees() {
       })
   }
   
-  // Update an employee's role
+  // update employee role
   function updateEmployeeRole() {
     db.findAllEmployees()
       .then(([rows]) => {
@@ -271,7 +273,7 @@ function viewEmployees() {
       })
   }
   
-  // Update an employee's manager
+  // update a manager
   function updateEmployeeManager() {
     db.findAllEmployees()
       .then(([rows]) => {
@@ -316,7 +318,7 @@ function viewEmployees() {
       })
   }
   
-  // View all roles
+  // view roles
   function viewRoles() {
     db.findAllRoles()
       .then(([rows]) => {
@@ -327,7 +329,7 @@ function viewEmployees() {
       .then(() => loadMainPrompts());
   }
   
-  // Add a role
+  // add role
   function addRole() {
     db.findAllDepartments()
       .then(([rows]) => {
@@ -361,7 +363,7 @@ function viewEmployees() {
       })
   }
   
-  // Delete a role
+  // delete role
   function removeRole() {
     db.findAllRoles()
       .then(([rows]) => {
@@ -386,7 +388,7 @@ function viewEmployees() {
       })
   }
   
-  // View all deparments
+  // view deparments
   function viewDepartments() {
     db.findAllDepartments()
       .then(([rows]) => {
@@ -397,7 +399,7 @@ function viewEmployees() {
       .then(() => loadMainPrompts());
   }
   
-  // Add a department
+  // add a department
   function addDepartment() {
     prompt([
       {
@@ -413,7 +415,7 @@ function viewEmployees() {
       })
   }
   
-  // Delete a department
+  // delete a department
   function removeDepartment() {
     db.findAllDepartments()
       .then(([rows]) => {
@@ -436,7 +438,7 @@ function viewEmployees() {
       })
   }
   
-  // View all departments and show their total utilized department budget
+  // view departments and their budgets
   function viewBudgetByDepartment() {
     db.viewDepartmentBudgets()
       .then(([rows]) => {
@@ -447,7 +449,7 @@ function viewEmployees() {
       .then(() => loadMainPrompts());
   }
   
-  // Add an employee
+  // add employee
   function addEmployee() {
     prompt([
       {
@@ -515,9 +517,11 @@ function viewEmployees() {
           })
       })
   }
+}
   
   function quit() {
-    console.log("Goodbye!");
+    console.log("Okay, m'bye now");
+    
     process.exit();
   }
 

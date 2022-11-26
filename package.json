@@ -1,14 +1,24 @@
 {
-  "name": "db",
+  "name": "sql_employee-tracker",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "mysql based cli for managing and tracking employees",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleji0/SQL_Employee-Tracker.git"
+  },
+  "author": "Alex Springer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aleji0/SQL_Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/aleji0/SQL_Employee-Tracker#readme",
   "dependencies": {
-    "inquirer": "^9.1.4"
+    "asciiart-logo": "^0.2.7",
+    "console.table": "^0.10.0",
+    "inquirer": "^8.2.4"
   }
 }
