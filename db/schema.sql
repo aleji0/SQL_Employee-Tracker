@@ -12,6 +12,7 @@ create table role(
     title varchar(30) not null,
     salary decimal not null,
     department_id int not null,
+    index dep_ind (department_id),
     constraint fk_department foreign key (department_id) references department(id) on delete cascade
 );
 
@@ -20,7 +21,9 @@ create table employee(
     first_name varchar(30) not null,
     last_name varchar(30) not null,
     role_id int not null,
+    index role_ind (role_id),
     constraint fk_role foreign key (role_id) references role(id) on delete cascade,
     manager_id int,
+    index man_ind (manager_id),
     constraint fk_manager foreign key (manager_id) references employee(id) on delete set null
 );
